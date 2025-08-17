@@ -11,4 +11,4 @@ This is the backend API for a Fitness Tracker application. It allows users to lo
 
 ## Installation
 1. Clone the repository:
-   git clone https://github.com/your-username/fitness-tracker.git
+   git clone https://github.com/NkatDesta/fitness-tracker.git
