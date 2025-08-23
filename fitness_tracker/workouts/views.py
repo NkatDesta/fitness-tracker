@@ -6,6 +6,8 @@ from .serializers import WorkoutSerializer
 class WorkoutListCreateView(generics.ListCreateAPIView):
     serializer_class = WorkoutSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['workout_type', 'date']
 
     def get_queryset(self):
         return WorkoutLog.objects.filter(user=self.request.user)
@@ -19,4 +21,6 @@ class WorkoutDetailView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return WorkoutLog.objects.filter(user=self.request.user)
+
+
 
