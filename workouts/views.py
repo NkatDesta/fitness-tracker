@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics, permissions
 from .models import WorkoutLog
 from .serializers import WorkoutSerializer
+from django_filters.rest_framework import DjangoFilterBackend
 
 class WorkoutListCreateView(generics.ListCreateAPIView):
     serializer_class = WorkoutSerializer
