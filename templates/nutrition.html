@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Nutrition Tracker</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  {% if meals %}
+    {% for meal in meals %}
+      <div class="bg-white shadow p-4 rounded">
+        <h3 class="font-semibold text-lg">{{ meal.food_name }}</h3>
+        <p class="text-sm text-gray-600">Type: {{ meal.meal_type }}</p>
+        <p class="text-sm text-gray-600">Calories: {{ meal.calories }}</p>
+        <p class="text-sm text-gray-600">Date: {{ meal.date }}</p>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p class="text-gray-500">No meals logged yet.</p>
+  {% endif %}
+</div>
+
+<a href="{% url 'add_meal' %}" class="mt-4 inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+  ➕ Add Meal
+</a>
+{% endblock %}

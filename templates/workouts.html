@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Your Workouts</h2>
+
+<a href="{% url 'add_workout' %}" class="bg-blue-600 text-white px-4 py-2 rounded mb-6 inline-block hover:bg-blue-700">
+  + Add Workout
+</a>
+
+{% for type, workouts in workouts_by_type.items %}
+  <h3 class="text-xl font-semibold mt-6">{{ type }}</h3>
+  {% if workouts %}
+    <ul class="space-y-4">
+      {% for workout in workouts %}
+        <li class="bg-white shadow p-4 rounded">
+          <h4 class="font-semibold">{{ workout.exercise_name }}</h4>
+          <p>
+            Duration: {{ workout.duration_minutes }} mins |
+            {% if workout.distance %}Distance: {{ workout.distance }} km |{% endif %}
+            {% if workout.reps %}Reps: {{ workout.reps }} |{% endif %}
+            {% if workout.sets %}Sets: {{ workout.sets }} |{% endif %}
+            Calories: {{ workout.calories_burned }}
+          </p>
+          <p>Date: {{ workout.date }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-gray-500">No {{ type }} workouts logged yet.</p>
+  {% endif %}
+{% endfor %}
+{% endblock %}

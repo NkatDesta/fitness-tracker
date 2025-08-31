@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Add a Meal</h2>
+
+<form method="post" class="space-y-4 bg-white p-6 rounded shadow">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+    Add Meal
+  </button>
+</form>
+
+<a href="{% url 'nutrition_template' %}" class="mt-4 inline-block text-green-500 hover:underline">
+  ← Back to Nutrition
+</a>
+
+<script>
+  // Optional: Hide protein/carbs/fats if not required
+  const caloriesField = document.querySelector('#id_calories').closest('p');
+  const proteinField = document.querySelector('#id_protein').closest('p');
+  const carbsField = document.querySelector('#id_carbs').closest('p');
+  const fatsField = document.querySelector('#id_fats').closest('p');
+
+  function toggleNutritionFields() {
+    const calories = parseInt(document.querySelector('#id_calories').value) || 0;
+    if (calories > 0) {
+      proteinField.style.display = 'block';
+      carbsField.style.display = 'block';
+      fatsField.style.display = 'block';
+    } else {
+      proteinField.style.display = 'none';
+      carbsField.style.display = 'none';
+      fatsField.style.display = 'none';
+    }
+  }
+
+  document.querySelector('#id_calories').addEventListener('input', toggleNutritionFields);
+  toggleNutritionFields(); // Initialize on load
+</script>
+{% endblock %}

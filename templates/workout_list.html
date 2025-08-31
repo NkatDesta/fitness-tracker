@@ -1,0 +1,14 @@
+{% if workouts %}
+  <ul class="space-y-4">
+    {% for workout in workouts %}
+      <li class="bg-white shadow p-4 rounded">
+        <h3 class="font-semibold">{{ workout.exercise_name }}</h3>
+        <p>Type: {{ workout.workout_type }}</p>
+        <p>Duration: {{ workout.duration_minutes }} mins | Distance: {{ workout.distance }} km | Calories: {{ workout.calories_burned }}</p>
+        <p>Date: {{ workout.date }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>You haven't logged any workouts yet.</p>
+{% endif %}

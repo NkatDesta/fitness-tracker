@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import WeeklySummaryView
+from .views import progress_view
 
 urlpatterns = [
-    path('summary/weekly/', WeeklySummaryView.as_view(), name='weekly-summary'),
+    path('progress/', progress_view, name='progress_template'), 
 ]

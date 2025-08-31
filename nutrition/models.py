@@ -13,6 +13,9 @@ class MealLog(models.Model):
     meal_type = models.CharField(max_length=20, choices=MEAL_TYPES)
     food_name = models.CharField(max_length=100)
     calories = models.IntegerField()
+    protein = models.FloatField(null=True, blank=True)
+    carbs = models.FloatField(null=True, blank=True)
+    fats = models.FloatField(null=True, blank=True)
     date = models.DateField()
 
     def __str__(self):

@@ -16,19 +16,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from fitness_tracker import views as main_views
 
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    # JWT endpoints first
+    # JWT endpoints first (API)
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
-    # App URLs
-    path('api/', include('users.urls')),
-    path('api/', include('workouts.urls')),
-    path('api/', include('nutrition.urls')),
-    path('api/', include('summaries.urls')),
+    #Home Page
+    path('', main_views.home, name="home"),
+
+    #Users App URL with template routes (login,register,dashboard,logout)
+    path('users/', include('users.urls')),
+
+    # Other App URLs
+    path('workouts/', include('workouts.urls')),
+    path('nutrition/', include('nutrition.urls')),
+    path('summaries/', include('summaries.urls')),
 ]
