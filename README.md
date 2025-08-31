@@ -37,11 +37,6 @@ fitness_tracker/
 │── fitness_tracker/  # Main project settings  
 
 
-## Installation
-1. Clone the repository:
-   git clone https://github.com/NkatDesta/fitness-tracker.git
-
-
 ⚙️ Installation & Setup
 
 1. Clone the repository
