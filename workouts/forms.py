@@ -1,6 +1,7 @@
 from django import forms
 from .models import WorkoutLog
 
+
 class WorkoutForm(forms.ModelForm):
     class Meta:
         model = WorkoutLog
